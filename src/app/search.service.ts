@@ -44,11 +44,11 @@ export class SearchService {
   }
 
   async retrieveAllSongs() {
-    return this.http.get<Array<Song>>('/api/songs');
+    return this.http.get<Array<Song>>('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs');
   }
 
   private retrieveOneSong(id: any) {
-    return this.http.get('/api/songs/'+id);
+    return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs/'+id);
 }
 
 /**
