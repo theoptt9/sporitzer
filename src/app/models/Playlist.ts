@@ -1,6 +1,7 @@
 import { Song } from './Song';
 
-export interface Playlist{
+export interface Playlist {
     id: number,
+    name: String,
     songs: Array<Song>
 }
