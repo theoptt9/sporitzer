@@ -47,20 +47,13 @@ export class SearchService {
     return this.http.get<Array<Song>>('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs');
   }
 
+  /**
+   * Get the song's informations.
+   * 
+   * @param id Id of the song.
+   * @returns Song's informations.
+   */
   private retrieveOneSong(id: any) {
     return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs/' + id);
   }
-
-  /**
-       * Retourne l'index dans le tableau de chanson de l'élément
-       * ayant l'id passé en paramètre
-       * @param id
-       * @private
-       */
-  private _getModelIndexById(id: number) {
-    return this.songs.findIndex(function (element) {
-      return element.id === id;
-    });
-  }
-
 }
