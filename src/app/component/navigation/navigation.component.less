@@ -2,12 +2,32 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  width: 600px;
-  position: absolute;
+  width: 360px;
+  height: 60px;
+  position: fixed;
   bottom: 0;
-  background-color: #44403F;
+  background-color: #292929;
+  align-items: center;
 
   &__items {
+    display: flex;
     flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+    &>svg {
+      fill: #A8A8A8;
+    }
+    &:hover {
+      &>svg {
+        fill: white;
+      }
+      &>p {
+        color: white;
+      }
+    }
+    &>p {
+      color: #A8A8A8;
+    }
   }
 }

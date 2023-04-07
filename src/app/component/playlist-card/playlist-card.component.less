@@ -1,14 +1,25 @@
 .playlist {
-  overflow: auto;
   display: flex;
-  flex-direction: row;
+  flex-wrap:wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+  justify-content: center;
+
   &__items {
-    width: 180px;
+    display: flex;
+    flex-direction: row;
+    width: 155px;
+    height: 58px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: #292929;
+    cursor: pointer;
   }
+
   &__title {
-
-  }
-  &__subtitle {
-
+    font-family: 'Poppins', sans-serif;
   }
 }
+
+

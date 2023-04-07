@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
 import { AlbumCardComponent } from './component/album-card/album-card.component';
 import { PlaylistCardComponent } from './component/playlist-card/playlist-card.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SearchComponent } from './pages/search/search.component';
+import { LibraryComponent } from './pages/library/library.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +16,9 @@ import { PlaylistCardComponent } from './component/playlist-card/playlist-card.c
     NavigationComponent,
     AlbumCardComponent,
     PlaylistCardComponent,
+    HomeComponent,
+    SearchComponent,
+    LibraryComponent,
   ],
   imports: [
     BrowserModule,

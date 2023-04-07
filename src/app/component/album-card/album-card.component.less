@@ -1,18 +1,19 @@
 .album {
+  overflow-x: auto;
   display: flex;
-  flex-wrap:wrap;
-  gap: 10px;
-  &__items {
-    display: flex;
-    flex-direction: row;
-    width: 49%;
-    align-items: center;
-    gap: 20px;
-    border-radius: 10px;
-    background-color: #292929;
-  }
+  flex-direction: row;
+  gap: 15px;
 
-  &__title {
-    font-family: 'Poppins', sans-serif;
+  &__items {
+    width: 170px;
+    cursor: pointer;
+
+    &-image {
+      border-radius: 10px;
+    }
+    &-title {
+      margin-top: 5px;
+      color: #7C7C7C;
+    }
   }
 }
