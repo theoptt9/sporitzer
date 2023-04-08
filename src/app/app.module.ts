@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { MusicComponent } from './component/music/music.component';
 import { PlaylistApiComponent } from './component/playlist-api/playlist-api.component';
 import { ArtistsApiComponent } from './component/artists-api/artists-api.component';
+import { LibraryDetailComponent } from './pages/library-detail/library-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ArtistsApiComponent } from './component/artists-api/artists-api.compone
     MusicComponent,
     PlaylistApiComponent,
     ArtistsApiComponent,
+    LibraryDetailComponent,
   ],
   imports: [
     BrowserModule,
