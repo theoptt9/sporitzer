@@ -11,6 +11,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { LibraryComponent } from './pages/library/library.component';
 import { FormsModule } from '@angular/forms';
 import { MusicComponent } from './component/music/music.component';
+import { PlaylistApiComponent } from './component/playlist-api/playlist-api.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MusicComponent } from './component/music/music.component';
     SearchComponent,
     LibraryComponent,
     MusicComponent,
+    PlaylistApiComponent,
   ],
   imports: [
     BrowserModule,

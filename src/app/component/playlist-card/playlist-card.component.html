@@ -1,6 +1,6 @@
 <div class="playlist">
   <div class="playlist__items" *ngFor="let playlist of playlists">
     <img src="https://picsum.photos/60/58" alt="Playlist Image">
-    <p class="playlist__title">{{ playlist }}</p>
+    <p class="playlist__title">{{ playlist.length > 7 ? playlist.substring(0, 7) + '...' : playlist }}</p>
   </div>
 </div>
