@@ -34,8 +34,23 @@ export class PlaylistService {
    * 
    * @param _playlist Selected playlist.
    * @param _newSongUrl url of the song to add.
+   * @param _playlist Selected playlist.
+   * @param _newSongUrl url of the song to add.
    * @returns Request to add a song in a playlist.
    */
+  addSong(_playlist: Playlist, _newSongUrl: String) {
+    // _newSongUrl : /~morap01/L250/public/index.php/api/songs/{id}
+
+    let songs = _playlist.songs;
+    let oldUrlSongs = [];
+
+    songs.forEach(song => {
+      oldUrlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
+    });
+    oldUrlSongs.push(_newSongUrl);
+
+    let bodyJson = { songs: oldUrlSongs }
+    return this.http.patch('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _playlist.id, bodyJson, httpOptions);
   addSong(_playlist: Playlist, _newSongUrl: String) {
     // _newSongUrl : /~morap01/L250/public/index.php/api/songs/{id}
 
@@ -63,13 +78,13 @@ export class PlaylistService {
     // songUrl : /~morap01/L250/public/index.php/api/songs/{id}
 
     let songs = _playlist.songs;
-    let urlSongs: string[] = [];
-
+    let oldUrlSongs: string[] = [];
+    
     songs.forEach(song => {
-      if (song.id != _idSong) {
-        urlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
-      }
+      oldUrlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
     });
+
+    let updatedSongs = oldUrlSongs.filter(song => song.id != _idSong);
 
     let bodyJson = { songs: urlSongs }
     return this.http.patch('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _playlist.id, bodyJson, httpOptions);
