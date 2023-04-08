@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { HttpHeaders } from '@angular/common/http';
-import { Song } from 'src/app/models/Song';
 import { SearchService } from './search.service';
 import { Playlist } from '../models/Playlist';
 
@@ -61,27 +60,28 @@ export class PlaylistService {
    * @returns Request to delete a song in a playlist.
    */
   delSong(_playlist: Playlist, _idSong: number) {
+    // songUrl : /~morap01/L250/public/index.php/api/songs/{id}
 
     let songs = _playlist.songs;
-    let oldUrlSongs: string[] = [];
-    
+    let urlSongs: string[] = [];
+
     songs.forEach(song => {
-      oldUrlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
+      if (song.id != _idSong) {
+        urlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
+      }
     });
 
-    let updatedSongs = oldUrlSongs.filter(song => song.id != _idSong);
-
-    let bodyJson = { songs: updatedSongs }
+    let bodyJson = { songs: urlSongs }
     return this.http.patch('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _playlist.id, bodyJson, httpOptions);
   }
 
   /**
    * Get the playlist using its id.
    * 
-   * @param id Id of the playlist.
+   * @param _id Id of the playlist.
    * @returns Playlist's informations.
    */
-  getPlaylistAt(id: number) {
-    return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + id);
+  getPlaylistAt(_id: number) {
+    return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _id);
   }
 }
