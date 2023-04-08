@@ -18,7 +18,7 @@ export class PlaylistService {
 
   /**
    * Create a new playlist.
-   * 
+   *
    * @param _name Name of the playlist.
    * @returns Request to create a new playlist.
    */
@@ -29,7 +29,7 @@ export class PlaylistService {
 
   /**
    * Add a new song to the playlist.
-   * 
+   *
    * @param _playlist Selected playlist.
    * @param _newSongUrl url of the song to add.
    * @returns Request to add a song in a playlist.
@@ -44,20 +44,24 @@ export class PlaylistService {
       oldUrlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
     });
     oldUrlSongs.push(_newSongUrl);
+    console.log(_newSongUrl);
+    console.log(songs);
+
 
     let bodyJson = { songs: oldUrlSongs }
     return this.http.patch('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _playlist.id, bodyJson, httpOptions);
+
   }
 
   /**
    * Delete a song in a selected playlist.
-   * 
+   *
    * @param _playlist Selected playlist.
    * @param _idSong id of the song to delete.
-   * 
+   *
    * @returns Request to delete a song in a playlist.
    */
-  delSong(_playlist: Playlist, _idSong: number) {
+  delSong(_playlist: Playlist, _idSong: any) {
     // songUrl : /~morap01/L250/public/index.php/api/songs/{id}
 
     let songs = _playlist.songs;
@@ -70,16 +74,23 @@ export class PlaylistService {
     });
 
     let bodyJson = { songs: urlSongs }
+
     return this.http.patch('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _playlist.id, bodyJson, httpOptions);
+  }
+
+  async retrieveOnePlaylist(id : any): Promise<Playlist> {
+    return new Promise((resolve, reject) => {
+      this.getPlaylistAt(id).subscribe((playlist) => resolve(playlist))
+    });
   }
 
   /**
    * Get the playlist using its id.
-   * 
+   *
    * @param _id Id of the playlist.
    * @returns Playlist's informations.
    */
   getPlaylistAt(_id: any) {
-    return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _id);
+    return this.http.get<Playlist>('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _id);
   }
 }

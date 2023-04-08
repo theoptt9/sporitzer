@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
     // this.playlistArray = await this.playlistService.retrievePlaylists();
 
     this.albumArray = await this.serviceAction.retrieveAllAlbums();
-    this.albumArray.slice(0,2);
     this.songArray = await this.serviceAction.retrieveAllSongs();
     this.artistArray = await this.serviceAction.retrieveAllArtists();
   }

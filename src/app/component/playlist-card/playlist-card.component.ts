@@ -26,7 +26,7 @@ export class PlaylistCardComponent implements OnInit {
       const playlistsString = localStorage.getItem('libraries') ?? '[]';
       this.playlists = JSON.parse(playlistsString) as string[];
 
-      //NEW 
+      //NEW
       //this.playlists = await this.playlistService.retrievePlaylists();
     }
   }
