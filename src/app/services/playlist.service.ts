@@ -78,13 +78,13 @@ export class PlaylistService {
     // songUrl : /~morap01/L250/public/index.php/api/songs/{id}
 
     let songs = _playlist.songs;
-    let oldUrlSongs: string[] = [];
-    
-    songs.forEach(song => {
-      oldUrlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
-    });
+    let urlSongs: string[] = [];
 
-    let updatedSongs = oldUrlSongs.filter(song => song.id != _idSong);
+    songs.forEach(song => {
+      if (song.id != _idSong) {
+        urlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
+      }
+    });
 
     let bodyJson = { songs: urlSongs }
     return this.http.patch('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _playlist.id, bodyJson, httpOptions);
