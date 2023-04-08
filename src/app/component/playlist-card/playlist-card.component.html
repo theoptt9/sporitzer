@@ -1,36 +1,6 @@
-<h2>Your shows</h2>
-<div class="playlist__items">
-  <img src="https://picsum.photos/80/80" alt="">
-  <h3 class="playlist__items-title">Playlist Title</h3>
-  <p class="playlist__items-subtitle">Playlist Subtitle</p>
-</div>
-
-<div class="playlist__items">
-  <img src="https://picsum.photos/80/80" alt="">
-  <h3 class="playlist__items-title">Playlist Title</h3>
-  <p class="playlist__items-subtitle">Playlist Subtitle</p>
-</div>
-
-<div class="playlist__items">
-  <img src="https://picsum.photos/80/80" alt="">
-  <h3 class="playlist__items-title">Playlist Title</h3>
-  <p class="playlist__items-subtitle">Playlist Subtitle</p>
-</div>
-
-<div class="playlist__items">
-  <img src="https://picsum.photos/80/80" alt="">
-  <h3 class="playlist__items-title">Playlist Title</h3>
-  <p class="playlist__items-subtitle">Playlist Subtitle</p>
-</div>
-
-<div class="playlist__items">
-  <img src="https://picsum.photos/80/80" alt="">
-  <h3 class="playlist__items-title">Playlist Title</h3>
-  <p class="playlist__items-subtitle">Playlist Subtitle</p>
-</div>
-
-<div class="playlist__items">
-  <img src="https://picsum.photos/80/80" alt="">
-  <h3 class="playlist__items-title">Playlist Title</h3>
-  <p class="playlist__items-subtitle">Playlist Subtitle</p>
+<div class="playlist">
+  <div class="playlist__items" *ngFor="let playlist of playlists">
+    <img src="https://picsum.photos/60/58" alt="Playlist Image">
+    <p class="playlist__title">{{ playlist }}</p>
+  </div>
 </div>
