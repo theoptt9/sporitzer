@@ -1,20 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-interface Song {
-  title: string;
-  artist: string;
-}
-
-interface Playlist {
-  name: string;
-  songs: Song[];
-}
-
-interface Library {
-  name: string;
-  playlists: Playlist[];
-}
-
 @Component({
   selector: 'app-library',
   templateUrl: './library.component.html',
@@ -23,21 +8,22 @@ interface Library {
 export class LibraryComponent implements OnInit {
   showModal = false;
   newLibraryName = '';
-  libraries: Library[] = [];
+  libraries: string[] = [];
 
   ngOnInit() {
-    this.newLibraryName = '';
     this.libraries = [];
-    const librariesString = localStorage.getItem('libraries') ?? '[]';
-    const libraries = JSON.parse(librariesString) as Library[];
-
-    for (const library of libraries) {
-      const playlistsString = localStorage.getItem(`library_${library.name}`) ?? '[]';
-      const playlists = JSON.parse(playlistsString) as Playlist[];
-      this.libraries.push({ name: library.name, playlists });
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key?.includes('library_')) {
+        const library = localStorage.getItem(key);
+        this.libraries.push(library ?? '');
+        // Ajoutez le nom de la playlist au localStorage sous la forme d'un tableau de chaînes de caractères
+        const playlistsString = localStorage.getItem(library ?? '') ?? '[]';
+        const playlists = JSON.parse(playlistsString) as string[];
+        localStorage.setItem(library ?? '', JSON.stringify(playlists));
+      }
     }
   }
-
   createLibrary() {
     // Vérifiez que le nom de la bibliothèque est valide
     if (this.newLibraryName.trim() === '') {
@@ -46,11 +32,10 @@ export class LibraryComponent implements OnInit {
     }
 
     // Récupérez les bibliothèques existantes depuis le LocalStorage
-    const librariesString = localStorage.getItem('libraries') ?? '[]';
-    const libraries = JSON.parse(librariesString) as Library[];
+    const libraries = JSON.parse(localStorage.getItem('libraries') || '[]');
 
     // Ajoutez la nouvelle bibliothèque à la liste
-    libraries.push({ name: this.newLibraryName, playlists: [] });
+    libraries.push(this.newLibraryName);
 
     // Stockez la liste mise à jour dans le LocalStorage
     localStorage.setItem('libraries', JSON.stringify(libraries));
@@ -59,26 +44,6 @@ export class LibraryComponent implements OnInit {
     this.newLibraryName = '';
     this.showModal = false;
 
-    const newLibrary: Library = { name: this.newLibraryName, playlists: [] };
-    this.libraries.push(newLibrary);
-  }
-
-  createPlaylist(library: Library) {
-    const playlistName = prompt('Veuillez entrer un nom de playlist');
-    if (playlistName?.trim() === '') {
-      alert('Veuillez entrer un nom de playlist valide.');
-      return;
-    }
-
-    const playlist: Playlist = { name: playlistName ?? '', songs: [] };
-    library.playlists.push(playlist);
-
-    localStorage.setItem(`library_${library.name}`, JSON.stringify(library.playlists));
-  }
-
-  addSongToPlaylist(playlist: Playlist, song: Song) {
-    playlist.songs.push(song);
-
-    localStorage.setItem(`playlist_${playlist.name}`, JSON.stringify(playlist));
+    this.libraries.push(this.newLibraryName);
   }
 }

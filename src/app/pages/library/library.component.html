@@ -8,9 +8,9 @@
 
     <div class="modal" [ngClass]="{'modal--visible': showModal}">
       <div class="modal__content">
-        <h2 class="modal__title">Nouvelle Bibliothèque</h2>
+        <h2 class="modal__title">Nouvelle Playlist</h2>
         <form class="modal__form">
-          <label class="modal__label" for="library-name">Nom de la bibliothèque:</label>
+          <label class="modal__label" for="library-name">Nom de la playlist:</label>
           <input class="modal__input" type="text" id="library-name" [(ngModel)]="newLibraryName" name="libraryName">
           <div class="modal__buttons">
             <button class="modal__button" type="button" (click)="showModal = false">Annuler</button>
