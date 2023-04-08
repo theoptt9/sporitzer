@@ -1,4 +1,22 @@
 <div class="library">
-  <h2>Vos playlists</h2>
-  <app-playlist-card class="playlist-personnal"></app-playlist-card>
+  <div class="library__top-menu">
+    <h2>Vos playlists</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" class="library__add" width="40px" height="40px" fill="white" viewBox="0 0 448 512" (click)="showModal = true"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+  </div>
+  <app-playlist-card class="playlist-library">
+  </app-playlist-card>
+
+    <div class="modal" [ngClass]="{'modal--visible': showModal}">
+      <div class="modal__content">
+        <h2 class="modal__title">Nouvelle Bibliothèque</h2>
+        <form class="modal__form">
+          <label class="modal__label" for="library-name">Nom de la bibliothèque:</label>
+          <input class="modal__input" type="text" id="library-name" [(ngModel)]="newLibraryName" name="libraryName">
+          <div class="modal__buttons">
+            <button class="modal__button" type="button" (click)="showModal = false">Annuler</button>
+            <button class="modal__button" type="button" (click)="createLibrary()">Créer</button>
+          </div>
+        </form>
+      </div>
+    </div>
 </div>

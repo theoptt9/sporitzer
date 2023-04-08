@@ -9,6 +9,8 @@ import { PlaylistCardComponent } from './component/playlist-card/playlist-card.c
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { LibraryComponent } from './pages/library/library.component';
+import { FormsModule } from '@angular/forms';
+import { MusicComponent } from './component/music/music.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,12 @@ import { LibraryComponent } from './pages/library/library.component';
     HomeComponent,
     SearchComponent,
     LibraryComponent,
+    MusicComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

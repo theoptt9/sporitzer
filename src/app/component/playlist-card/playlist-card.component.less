@@ -1,25 +1,48 @@
-.playlist {
-  display: flex;
-  flex-wrap:wrap;
-  gap: 10px;
-  margin-bottom: 25px;
-  justify-content: center;
-
-  &__items {
+.playlist-library {
+  .playlist {
     display: flex;
-    flex-direction: row;
-    width: 155px;
-    height: 58px;
-    align-items: center;
     gap: 10px;
-    border-radius: 10px;
-    background-color: #292929;
-    cursor: pointer;
-  }
+    margin-bottom: 25px;
+    justify-content: center;
+    flex-direction: column;
 
-  &__title {
-    font-family: 'Poppins', sans-serif;
+    &__items {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 58px;
+      align-items: center;
+      gap: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
   }
 }
+.playlist__wrapper {
+  .playlist {
+    display: flex;
+    flex-wrap:wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+    justify-content: center;
+
+    &__items {
+      display: flex;
+      flex-direction: row;
+      width: 155px;
+      height: 58px;
+      align-items: center;
+      gap: 10px;
+      border-radius: 10px;
+      background-color: #292929;
+      cursor: pointer;
+    }
+
+    &__title {
+      font-family: 'Poppins', sans-serif;
+    }
+  }
+}
+
 
 

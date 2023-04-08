@@ -1,8 +1,6 @@
 <div class="playlist">
-  <div *ngFor="let i of [1, 2, 3, 4, 5, 6]">
-  <div class="playlist__items">
+  <div class="playlist__items" *ngFor="let playlist of playlists">
     <img src="https://picsum.photos/60/58" alt="Playlist Image">
-    <p class="playlist__title">test</p>
+    <p class="playlist__title">{{ playlist }}</p>
   </div>
-</div>
 </div>
