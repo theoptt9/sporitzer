@@ -1,32 +1,49 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Song } from 'src/app/models/Song';
+import { Playlist } from '../models/Playlist';
+import { Album } from '../models/Album';
+import { Artist } from '../models/Artist';
+import { ActionManagerService } from './action-manager.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  protected songs: Array<Song> = [];
-  private initialized: boolean = false;
+  playlistArray: Playlist[] = [];
+  songArray: Song[] = [];
+  albumArray: Album[] = [];
+  artistArray: Artist[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(public actionService: ActionManagerService, private http: HttpClient) { }
 
-  async searchWith(_criteria: String) {
+  async searchWith(_criteria: string) {
 
-  }
+    let result: (Album | Artist | Song)[] = [];
 
-  async retrieveAllSongs() {
-    return this.http.get<Array<Song>>('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs');
-  }
+    this.albumArray = await this.actionService.retrieveAllAlbums();
+    this.songArray = await this.actionService.retrieveAllSongs();
+    this.artistArray = await this.actionService.retrieveAllArtists();
 
-  /**
-   * Get the song's informations.
-   * 
-   * @param id Id of the song.
-   * @returns Song's informations.
-   */
-  public retrieveOneSong(id: number) {
-    return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs/' + id);
+    this.albumArray.forEach(element => {
+      if (element.title.includes(_criteria)) {
+        result.push(element)
+      }
+    });
+
+    this.songArray.forEach(element => {
+      if (element.title.includes(_criteria)) {
+        result.push(element)
+      }
+    });
+
+    this.artistArray.forEach(element => {
+      if (element.name.includes(_criteria)) {
+        result.push(element)
+      }
+    });
+
+    return result;
   }
 }

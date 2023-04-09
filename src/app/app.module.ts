@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './component/navigation/navigation.component';
@@ -14,6 +13,7 @@ import { MusicComponent } from './component/music/music.component';
 import { PlaylistApiComponent } from './component/playlist-api/playlist-api.component';
 import { ArtistsApiComponent } from './component/artists-api/artists-api.component';
 import { LibraryDetailComponent } from './pages/library-detail/library-detail.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { LibraryDetailComponent } from './pages/library-detail/library-detail.co
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
