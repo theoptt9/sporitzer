@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'search', component: SearchComponent},
   { path: 'library', component: LibraryComponent},
-  { path: 'playlist/:name', component: LibraryDetailComponent },
+  {path: "**", redirectTo : "/"},
 ];
 
 @NgModule({

@@ -33,6 +33,7 @@ import { LibraryDetailComponent } from './pages/library-detail/library-detail.co
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   albums: Album[] = [];
   artists: Artist[] = [];
 
-  constructor(public playlistService: PlaylistService, public searchService: SearchService, actionManager: ActionManagerService) { }
+  constructor(public servicePlaylist: PlaylistService, public serviceSearch: SearchService, serviceAction: ActionManagerService) { }
 
   ngOnInit() {
     

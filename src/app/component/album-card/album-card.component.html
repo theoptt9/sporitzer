@@ -1,5 +1,5 @@
 <div class="album">
-  <div *ngFor="let album of actionService.retrieveAllAlbums ">
+  <div *ngFor="let album of actionService.retrieveAllAlbums()|async">
     <p class="album__items-title">{{album.title}}</p>
 
     <div class="album__items" *ngFor="let song of album.songs">

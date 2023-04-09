@@ -13,9 +13,9 @@ import { Artist } from 'src/app/models/Artist';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
-  constructor(public playlistService: PlaylistService,
-    public searchService: SearchService,
-    public actionService: ActionManagerService) { }
+  constructor(public servicePlaylist: PlaylistService,
+    public serviceSearch: SearchService,
+    public serviceAction: ActionManagerService) { }
 
   playlistName: string = "";
 
@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     // this.playlistArray = await this.playlistService.retrievePlaylists();
 
-    this.albumArray = await this.actionService.retrieveAllAlbums();
-    this.songArray = await this.actionService.retrieveAllSongs();
-    this.artistArray = await this.actionService.retrieveAllArtists();
+    this.albumArray = await this.serviceAction.retrieveAllAlbums();
+    this.songArray = await this.serviceAction.retrieveAllSongs();
+    this.artistArray = await this.serviceAction.retrieveAllArtists();
   }
 }

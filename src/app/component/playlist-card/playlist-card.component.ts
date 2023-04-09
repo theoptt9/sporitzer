@@ -27,7 +27,7 @@ export class PlaylistCardComponent implements OnInit {
       this.playlists = JSON.parse(playlistsString) as string[];
 
       //NEW 
-      this.playlists = await this.playlistService.retrievePlaylists();
+      //this.playlists = await this.playlistService.retrievePlaylists(); TODO
     }
   }
 }
