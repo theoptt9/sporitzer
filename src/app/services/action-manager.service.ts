@@ -144,7 +144,7 @@ export class ActionManagerService {
     return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs/' + id);
   }
 
-  public playSong(id : any) {
+  public playSong() {
     
   }
 }
