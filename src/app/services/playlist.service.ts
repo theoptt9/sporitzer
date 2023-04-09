@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { HttpHeaders } from '@angular/common/http';
-import { SearchService } from './search.service';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Playlist } from '../models/Playlist';
 
 const httpOptions = {
@@ -14,15 +12,15 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class PlaylistService {
-  protected playlists: Array<Playlist> = []
+  playlists: Array<Playlist> = []
 
-  constructor(public search: SearchService, private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   /**
    * Create a new playlist.
    * 
    * @param _name Name of the playlist.
-   * @returns POST
+   * @returns Request to create a new playlist.
    */
   createPlaylist(_name: String) {
     let bodyJson = { name: _name };
@@ -81,7 +79,7 @@ export class PlaylistService {
    * @param _id Id of the playlist.
    * @returns Playlist's informations.
    */
-  getPlaylistAt(_id: number) {
+  getPlaylistAt(_id: any) {
     return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _id);
   }
 }

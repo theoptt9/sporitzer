@@ -1,8 +1,16 @@
 <div class="home">
   <h2>Vos playlists</h2>
-  <app-playlist-card class="playlist__wrapper"></app-playlist-card>
+  <span class="playlist__wrapper" *ngFor="let playlist of ">
+    <p>name : {{playlist.name}}</p>
+  </span>
+
   <h2>Vos albums préférés</h2>
-  <app-album-card class="album--wrapper"></app-album-card>
+  <span class="album--wrapper" *ngFor="let album of actionService.albumArray">
+    <p>name: {{album.title}} </p>
+  </span>
+
   <h2>Ecoutés recemment</h2>
-  <app-playlist-card class="playlist__wrapper"></app-playlist-card>
+  <span class="playlist__wrapper" *ngFor="let song of actionService.songArray">
+    <p>name : {{song.title}}</p>
+  </span>
 </div>

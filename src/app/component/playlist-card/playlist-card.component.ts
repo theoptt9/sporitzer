@@ -1,5 +1,5 @@
 import { Component, Input, OnInit} from '@angular/core';
-
+import { PlaylistService } from 'src/app/services/playlist.service';
 @Component({
   selector: 'app-playlist-card',
   templateUrl: './playlist-card.component.html',
@@ -9,7 +9,7 @@ export class PlaylistCardComponent implements OnInit {
   @Input() newlibraryName = '';
   playlists: string[] = [];
 
-  constructor() {
+  constructor(public playlistService : PlaylistService) {
     const libraryName = localStorage.getItem('libraries');
 
     if (libraryName) {
@@ -22,8 +22,12 @@ export class PlaylistCardComponent implements OnInit {
     const libraryName = localStorage.getItem('libraries');
 
     if (libraryName) {
+      // OLD
       const playlistsString = localStorage.getItem('libraries') ?? '[]';
       this.playlists = JSON.parse(playlistsString) as string[];
+
+      //NEW 
+      this.playlists = await this.playlistService.retrievePlaylists();
     }
   }
 }
