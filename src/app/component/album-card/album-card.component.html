@@ -1,12 +1,6 @@
 <div class="album">
-  <div *ngFor="let album of actionService.retrieveAllAlbums()|async">
+  <div class="album__items" *ngFor="let album of actionService.albumArray">
+    <img src="{{album.image}}" alt="Album Image">
     <p class="album__items-title">{{album.title}}</p>
-
-    <div class="album__items" *ngFor="let song of album.songs">
-      <img src="https://picsum.photos/160/150" alt="Album Image">
-      <p>{{song.title}}</p>
-      <p>{{song.artist}}</p>
-      <p>{{song.youtube}}</p>
-    </div>
   </div>
 </div>

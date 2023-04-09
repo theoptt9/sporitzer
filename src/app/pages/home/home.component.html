@@ -1,16 +1,10 @@
 <div class="home">
   <h2>Vos playlists</h2>
-  <!-- <span class="playlist__wrapper" *ngFor="let playlist of ">
-  <p>name : {{playlist.name}}</p>
-  </span> -->
-
-  <h2>Vos albums préférés</h2>
-  <span class="album--wrapper" *ngFor="let album of serviceAction.albumArray">
-    <p>name: {{album.title}} </p>
-  </span>
-
-  <h2>Ecoutés recemment</h2>
-  <span class="playlist__wrapper" *ngFor="let song of serviceAction.songArray">
-    <p>name : {{song.title}}</p>
-  </span>
+  <app-playlist-card class="playlist__wrapper"></app-playlist-card>
+  <h2>Albums du moment</h2>
+  <app-album-card class="album--wrapper"></app-album-card>
+  <h2>Playlists du moment</h2>
+  <app-playlist-api class="playlist__api"></app-playlist-api>
+  <h2>Artistes du moment</h2>
+  <app-artists-api class="artists__api"></app-artists-api>
 </div>
