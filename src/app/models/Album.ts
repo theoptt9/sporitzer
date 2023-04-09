@@ -3,7 +3,7 @@ import { Song } from './Song';
 export interface Album {
     id: number,
     title: String,
-    Songs: Array<Song>,
+    songs: Array<Song>,
     albumType: {
         id: number,
         name: String

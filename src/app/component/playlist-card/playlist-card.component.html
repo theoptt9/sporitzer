@@ -1,6 +1,11 @@
 <div class="playlist">
-  <div class="playlist__items" *ngFor="let playlist of playlists" [routerLink]="['/playlist', playlist]">
-      <img src="https://picsum.photos/60/58" alt="Playlist Image">
-      <p class="playlist__title">{{ playlist.length > 20 ? playlist.substring(0, 20) + '...' : playlist }}</p>
+  <div class="playlist__items" *ngFor="let playlist of playlistService.retrievePlaylists">
+    <img src="https://picsum.photos/60/58" alt="Playlist Image">
+    <p class="playlist__title">{{ playlist }}</p>
+
+    <div *ngFor="let song of playlist.songs">
+        <p>{{song.title}}</p>
+        <p> {{song.youtube}} </p>
+    </div>
   </div>
 </div>
