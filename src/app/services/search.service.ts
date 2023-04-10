@@ -5,6 +5,7 @@ import { Playlist } from '../models/Playlist';
 import { Album } from '../models/Album';
 import { Artist } from '../models/Artist';
 import { ActionManagerService } from './action-manager.service';
+import { PlaylistService } from './playlist.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,34 +17,20 @@ export class SearchService {
   albumArray: Album[] = [];
   artistArray: Artist[] = [];
 
-  constructor(public actionService: ActionManagerService, private http: HttpClient) { }
+  constructor(public actionService: ActionManagerService, public playlistService : PlaylistService, private http: HttpClient) { }
 
   async searchWith(_criteria: string) {
-
-    let result: (Album | Artist | Song)[] = [];
 
     this.albumArray = await this.actionService.retrieveAllAlbums();
     this.songArray = await this.actionService.retrieveAllSongs();
     this.artistArray = await this.actionService.retrieveAllArtists();
+    // this.playlistArray = await this.playlistService.retrieveOnePlaylist();
 
-    this.albumArray.forEach(element => {
-      if (element.title.includes(_criteria)) {
-        result.push(element)
-      }
-    });
-
-    this.songArray.forEach(element => {
-      if (element.title.includes(_criteria)) {
-        result.push(element)
-      }
-    });
-
-    this.artistArray.forEach(element => {
-      if (element.name.includes(_criteria)) {
-        result.push(element)
-      }
-    });
-
-    return result;
+    return {
+      artists : this.artistArray.filter(artist => artist.name.toUpperCase().includes(_criteria.toUpperCase())).slice(0,5),
+      songs : this.songArray.filter(song => song.title.toUpperCase().includes(_criteria.toUpperCase())).slice(0,5),
+      albums : this.albumArray.filter(album => album.title.toUpperCase().includes(_criteria.toUpperCase())).slice(0,5),
+      playlists : this.playlistArray.filter(playlist => playlist.name.toUpperCase().includes(_criteria.toUpperCase())).slice(0,5)
+    };
   }
 }
