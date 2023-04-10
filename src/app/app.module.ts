@@ -16,7 +16,6 @@ import { LibraryDetailComponent } from './pages/library-detail/library-detail.co
 import { HttpClientModule } from '@angular/common/http';
 import { AlbumDetailComponent } from './pages/album-detail/album-detail.component';
 import { ArtistDetailComponent } from './pages/artist-detail/artist-detail.component';
-import { MusicPlayerComponent } from './pages/music-player/music-player.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import { MusicPlayerComponent } from './pages/music-player/music-player.componen
     LibraryDetailComponent,
     AlbumDetailComponent,
     ArtistDetailComponent,
-    MusicPlayerComponent,
   ],
   imports: [
     BrowserModule,
