@@ -20,9 +20,12 @@ export class PlaylistApiComponent implements OnInit {
   let playlistArray: Playlist[] = [];
   do {
     i++;
-    let playlist = await this.playlistService.retrieveOnePlaylist(i);
+    let maxIndex = 250
+    let randomIndex = Math.floor(Math.random() * maxIndex)
+
+    let playlist = await this.playlistService.retrieveOnePlaylist(randomIndex);
     playlistArray.push(playlist);
-  } while(i<70);
+  } while(playlistArray.length < 20);
   return playlistArray;
 }
 }

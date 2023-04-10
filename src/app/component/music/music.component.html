@@ -6,28 +6,43 @@
         <img src="{{album.image}}" width="60px" height="50px" alt="music Image">
         <div class="music__titleAndActions">
           <p class="music__title">{{song.title}}</p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="grey" viewBox="0 0 128 512"><path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/></svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="grey" viewBox="0 0 128 512"><path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="grey" viewBox="0 0 128 512">
+            <path
+              d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="grey" viewBox="0 0 128 512">
+            <path
+              d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+          </svg>
 
         </div>
       </div>
-  </div>
+    </div>
   </div>
 
-    <ng-template #default>
-      <div *ngIf="playlist">
-        <h2>{{playlist.name}}</h2>
-        <div *ngFor="let song of playlist.songs">
-            <div class="music__items">
-            <img src="https://picsum.photos/60/50" alt="music Image">
-            <div class="music__titleAndActions">
-              <p class="music__title">{{song.title}}</p>
-                <svg class="svg-song" [attr.data-song-id]="song.id" (click)="addSong($event)" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="grey" viewBox="0 0 128 512"><path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/></svg>
-                <svg class="svg-song" [attr.data-song-id]="song.id" (click)="delSong($event)" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="grey" viewBox="0 0 128 512"><path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z"/></svg>
+  <ng-template #default>
+    <div *ngIf="playlist">
+      <h2>{{playlist.name}}</h2>
+      <div *ngFor="let song of playlist.songs">
+        <div class="music__items">
+          <img src="https://picsum.photos/60/50" alt="music Image">
+          <div class="music__titleAndActions">
+            <p class="music__title">{{song.title}}</p>
+            <svg class="svg-song" [attr.data-song-id]="song.id" (click)="addSong($event)"
+              xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="grey" viewBox="0 0 128 512">
+              <path
+                d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+            </svg>
+            <svg class="svg-song" [attr.data-song-id]="song.id" (click)="delSong($event)"
+              xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="grey" viewBox="0 0 128 512">
+              <path [attr.data-song-id]="song.id" (click)="delSong($event)"
+                d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" 
+                />
+            </svg>
 
-              </div>
           </div>
         </div>
       </div>
-    </ng-template>
+    </div>
+  </ng-template>
 </div>

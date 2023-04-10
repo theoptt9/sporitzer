@@ -32,18 +32,16 @@ export class MusicComponent implements OnInit {
 
   addSong(event: MouseEvent) {
     const songId = (event.target as HTMLButtonElement).getAttribute('data-song-id');
-
     console.log(songId);
-
     const url = '/~morap01/L250/public/index.php/api/songs/' + songId;
-    this.playlistService.addSong(this.playlist, url);
+    this.playlistService.AddToPlaylist(this.playlist, url);
+    
+    alert('La musique a été ajouté dans ' + this.playlist.name);
   }
 
   delSong(event: MouseEvent) {
     const songId = (event.target as HTMLButtonElement).getAttribute('data-song-id');
-    const url = '/~morap01/L250/public/index.php/api/songs/' + songId;
-    this.playlistService.delSong(this.playlist, songId);
-    alert('La musique a été supprimée avec succès!');
-
+    
+    this.playlistService.removeSong(this.playlist, songId);
   }
 }

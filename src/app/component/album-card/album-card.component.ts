@@ -9,11 +9,14 @@ import { Artist } from 'src/app/models/Artist';
 })
 export class AlbumCardComponent implements OnInit {
   albumArray : Album[] = [];
-  artist: Artist | undefined;
   @Input() albums!: Album[];
+  artist!: Artist;
   constructor(public actionService: ActionManagerService) { }
 
   async ngOnInit() {
-
+    let id = window.location.pathname.split('/').at(2);
+    if (window.location.pathname.split('/').at(1)=='artist') {
+      this.artist = await this.actionService.retrieveOneArtist(id);
+    } 
   }
 }
