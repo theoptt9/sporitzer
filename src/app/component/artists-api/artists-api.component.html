@@ -1,9 +1,0 @@
-<div class="artists__api">
-  <div class="artists__api__items" *ngFor="let artist of actionService.artists">
-    <div [routerLink]="['/artist', artist.id]">
-      <img src="https://picsum.photos/100/100" alt="Artist Image">
-      <p class="artists__api__title">{{artist.name}}</p>
-    </div>
-  </div>
-</div>
-
