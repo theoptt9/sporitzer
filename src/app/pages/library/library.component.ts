@@ -45,5 +45,6 @@ export class LibraryComponent implements OnInit {
     this.showModal = false;
 
     this.libraries.push(this.newLibraryName);
+    location.reload();
   }
 }
