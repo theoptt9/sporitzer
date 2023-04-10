@@ -27,6 +27,12 @@ export class PlaylistService {
     return this.http.post('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists', bodyJson, httpOptions);
   }
 
+  AddToPlaylist(_playlist: Playlist, _newSongUrl: String) {
+    new Promise((resolve, reject) => {
+      this.addSong(_playlist, _newSongUrl).subscribe();
+    });
+  }
+
   /**
    * Add a new song to the playlist.
    *
@@ -44,13 +50,17 @@ export class PlaylistService {
       oldUrlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
     });
     oldUrlSongs.push(_newSongUrl);
-    console.log(_newSongUrl);
-    console.log(songs);
-
 
     let bodyJson = { songs: oldUrlSongs }
     return this.http.patch('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _playlist.id, bodyJson, httpOptions);
+  }
 
+  removeSong(_playlist: Playlist, _idSong: any) {
+    new Promise((resolve, reject) => {
+      this.delSong(_playlist, _idSong).subscribe();
+    });
+
+    location.reload();
   }
 
   /**
@@ -72,7 +82,6 @@ export class PlaylistService {
         urlSongs.push("/~morap01/L250/public/index.php/api/songs/" + song.id);
       }
     });
-
     let bodyJson = { songs: urlSongs }
 
     return this.http.patch('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/playlists/' + _playlist.id, bodyJson, httpOptions);
