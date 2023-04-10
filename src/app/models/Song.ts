@@ -4,5 +4,5 @@ export interface Song {
     artist: String,
     album: String,
     length: number,
-    youtube: String
+    youtube: string
 }
