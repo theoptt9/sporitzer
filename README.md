@@ -1,6 +1,9 @@
 # Spotizer
 Projet fait en bînome par Théo PETIT et Maxime NGUYEN
 
+## Réalisation
+Page web réalisé avec un format MOBILE
+
 ## Buts accomplis
 - Recherche des artistes, Sons et albums (Données seulement)
 - Sélection des artistes / albums et affichage de leur contenu
