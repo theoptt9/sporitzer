@@ -1,5 +1,5 @@
 <div class="playlist">
-  <div class="playlist__items" *ngFor="let playlist of playlists" [routerLink]="['/playlist', playlist]">
+  <div class="playlist__items" *ngFor="let playlist of playlists" [routerLink]="['/library', 21]">
       <img src="https://picsum.photos/60/58" alt="Playlist Image">
       <p class="playlist__title">{{ playlist.length > 20 ? playlist.substring(0, 20) + '...' : playlist }}</p>
   </div>

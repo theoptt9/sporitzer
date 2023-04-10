@@ -8,7 +8,9 @@ import { Artist } from '../models/Artist';
   providedIn: 'root'
 })
 export class ActionManagerService {
-
+  song : Song | undefined ;
+  album : Album | undefined ;
+  artist : Artist | undefined ;
   songArray: Song[] = [];
   albumArray: Album[] = [];
   artistArray: Artist[] = [];
@@ -21,6 +23,7 @@ export class ActionManagerService {
     this.albumArray = await this.retrieveAlbums();
     this.artistArray = await this.retrieveArtists();
     this.initialized = true;
+    this.album = await this.retrieveOneAlbum(3);
   }
 
   async retrieveAllSongs(): Promise<Array<Song>> {
@@ -90,12 +93,12 @@ export class ActionManagerService {
 
   /**
    * Get the artist using its id.
-   * 
+   *
    * @param id Id of the artist.
    * @returns Artist's informations.
    */
   getArtistAt(id: any) {
-    return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/artists' + id);
+    return this.http.get<Artist>('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/artists/' + id);
   }
 
   async retrieveAlbums(): Promise<Array<Album>> {
@@ -106,22 +109,21 @@ export class ActionManagerService {
 
   /**
    * Get all albums.
-   * 
+   *
    * @returns All albums.
    */
   getAlbums() {
     return this.http.get<Array<Album>>('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/albums');
-
   }
 
   /**
    * Get the album using its id.
-   * 
+   *
    * @param id Id of the album.
    * @returns Album's informations.
    */
   getAlbumAt(id: any) {
-    return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/albums' + id);
+    return this.http.get<Album>('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/albums/' + id);
   }
 
   async retrieveSongs(): Promise<Array<Song>> {
@@ -136,15 +138,39 @@ export class ActionManagerService {
 
   /**
    * Get the song's informations.
-   * 
+   *
+   * @param id Id of the song.
+   * @returns Song's informations.
+   */
+  async retrieveOneAlbum(id : any): Promise<Album> {
+    return new Promise((resolve, reject) => {
+      this.getAlbumAt(id).subscribe((album) => resolve(album))
+    });
+  }
+
+  async retrieveOneArtist(id: any): Promise<Artist> {
+    return new Promise((resolve, reject) => {
+      this.getArtistAt(id).subscribe((artist) => resolve(artist));
+    });
+  }
+
+  async retrieveOneSong(id : any): Promise<Song> {
+    return new Promise((resolve, reject) => {
+      this.getSongAt(id).subscribe((song) => resolve(song))
+    });
+  }
+
+  /**
+   * Get the song's informations.
+   *
    * @param id Id of the song.
    * @returns Song's informations.
    */
   public getSongAt(id: any) {
-    return this.http.get('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs/' + id);
+    return this.http.get<Song>('https://mmi.unilim.fr/~morap01/L250/public/index.php/api/songs/' + id);
   }
 
   public playSong() {
-    
+
   }
 }

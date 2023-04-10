@@ -14,6 +14,9 @@ import { PlaylistApiComponent } from './component/playlist-api/playlist-api.comp
 import { ArtistsApiComponent } from './component/artists-api/artists-api.component';
 import { LibraryDetailComponent } from './pages/library-detail/library-detail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AlbumDetailComponent } from './pages/album-detail/album-detail.component';
+import { ArtistDetailComponent } from './pages/artist-detail/artist-detail.component';
+import { MusicPlayerComponent } from './pages/music-player/music-player.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     PlaylistApiComponent,
     ArtistsApiComponent,
     LibraryDetailComponent,
+    AlbumDetailComponent,
+    ArtistDetailComponent,
+    MusicPlayerComponent,
   ],
   imports: [
     BrowserModule,
