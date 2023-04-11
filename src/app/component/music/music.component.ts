@@ -35,12 +35,11 @@ export class MusicComponent implements OnInit {
   constructor(public sanitizer: DomSanitizer, public actionService: ActionManagerService, public playlistService: PlaylistService) { }
 
   async ngOnInit() {
-    let id = window.location.pathname.split('/').at(2);
+    let id = window.location.pathname.split('/').at(-1);
     if (window.location.pathname.split('/').at(1) == 'library') {
       this.playlist = await this.playlistService.retrieveOnePlaylist(id);
     } else {
       this.album = await this.actionService.retrieveOneAlbum(id);
-
     }
   }
 

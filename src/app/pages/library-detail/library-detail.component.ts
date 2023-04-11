@@ -18,7 +18,7 @@ export class LibraryDetailComponent implements OnInit {
   }
 
   async ngOnInit() {
-    let id = window.location.pathname.split('/').at(2);
+    let id = window.location.pathname.split('/').at(-1);
     this.playlist = await this.playlistService.retrieveOnePlaylist(id);
     this.songs = await Promise.all(this.playlist.songs.map(url=>this.actionService.retrieveOneSong(id)));
   }

@@ -14,7 +14,7 @@ export class AlbumCardComponent implements OnInit {
   constructor(public actionService: ActionManagerService) { }
 
   async ngOnInit() {
-    let id = window.location.pathname.split('/').at(2);
+    let id = window.location.pathname.split('/').at(-1);
     if (window.location.pathname.split('/').at(1)=='artist') {
       this.artist = await this.actionService.retrieveOneArtist(id);
     } 

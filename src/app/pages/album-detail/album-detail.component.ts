@@ -17,7 +17,7 @@ export class AlbumDetailComponent implements OnInit {
 
   }
   async ngOnInit() {
-    let id = window.location.pathname.split('/').at(2);
+    let id = window.location.pathname.split('/').at(-1);
     this.album = await this.actionService.retrieveOneAlbum(id);
     this.songs = await Promise.all(this.album.songs.map(url=>this.actionService.retrieveOneSong(id)));
   }

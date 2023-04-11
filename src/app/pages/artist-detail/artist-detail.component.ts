@@ -13,7 +13,7 @@ export class ArtistDetailComponent implements OnInit {
   albums!: Album[];
   constructor(public actionService: ActionManagerService) { }
   async ngOnInit() {
-    let id = window.location.pathname.split('/').at(2);
+    let id = window.location.pathname.split('/').at(-1);
     this.artist = await this.actionService.retrieveOneArtist(id);
     this.albumArray = this.artist.albums;
     this.albums = await Promise.all(this.artist.albums.map(url=>this.actionService.retrieveOneAlbum(url.split('/').at(-1))));
